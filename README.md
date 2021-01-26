@@ -124,7 +124,7 @@ ansible-playbook project_playbook.yml
 ```
 7. After the installation have been completed, navigate to the `http://<<load_balancer_public_ip>>/app/kibana` to verify the installation. The following dashboard should be displayed. 
 
-[kibana-dashboard](Diagrams/kibana-dashboard.png)
+![kibana-dashboard](Diagrams/kibana-dashboard.png)
 
 8. Copy the [filebeat playbook]() and the [metricbeat playbook]() in the `/etc/ansible` folder and use the following commands to run the playbooks. 
 Filebeat playbook
