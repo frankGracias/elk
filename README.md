@@ -85,8 +85,8 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- Web 1 at IP 10.1.0.7
-- Web 2 at IP 10.1.0.8
+- DVMA-VM3 at IP 10.1.0.9
+- DVMA-VM4 at IP 10.1.0.12
 
 The following Beats have been installed on these machines:
   * Filebeat
@@ -106,8 +106,8 @@ In order to use the playbook, you will need to have an Ansible control node alre
  3. Update the `hosts` file within that folder to include the webservers internal IPS
 ```
 [webservers]
-10.1.0.7 ansible_python_interpreter=/usr/bin/python3
-10.1.0.8 ansible_python_interpreter=/usr/bin/python3
+10.1.0.9 ansible_python_interpreter=/usr/bin/python3
+10.1.0.12 ansible_python_interpreter=/usr/bin/python3
 
 [elk_servers]
 10.2.0.4 ansible_python_interpreter=/usr/bin/python3
