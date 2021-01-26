@@ -1,6 +1,6 @@
 # playbook that uses the metricbeat role install metricbeat on the remote (elk) server
 - name: Install metricbeat with the metricbeat role
-  hosts: elk_servers
+  hosts: webservers
   become: True  # alow user to become the elk user 
   roles: 
     - install-metricbeat

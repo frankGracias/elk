@@ -2,7 +2,7 @@
 # to download and install filebeat in the remote (elk) server
 
   - name: Download and install filebeat
-    hosts: elk_servers
+    hosts: webservers
     become: True
     tasks:
 

@@ -98,16 +98,41 @@ These Beats allow us to collect the following information from each machine:
 
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned as a ansible docker container following given steps to run the ansible playbooks: 
 
-SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+ 1. ssh to the jump box, start the ansible docker container (if not running already) and enter into the ansible container
+ 2. Navigate to the `/etc/ansible` folder
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+ 3. Update the `hosts` file within that folder to include the webservers internal IPS
+```
+[webservers]
+10.1.0.7 ansible_python_interpreter=/usr/bin/python3
+10.1.0.8 ansible_python_interpreter=/usr/bin/python3
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+[elk_servers]
+10.2.0.4 ansible_python_interpreter=/usr/bin/python3
+```
+4. Update the `ansible.cfg` file with the remote username
+```
+remote_user = azadmin
+```
+5. Copy the [project_playbook.yml](Ansible/project_playbook.yml) file in the `/etc/ansible` folder
+
+6. Use the following command to run the ELK setup. 
+```
+ansible-playbook project_playbook.yml
+```
+7. After the installation have been completed, navigate to the `http://<<load_balancer_public_ip>>/app/kibana` to verify the installation. The following dashboard should be displayed. 
+
+[kibana-dashboard](Diagrams/kibana-dashboard.png)
+
+8. Copy the [filebeat playbook]() and the [metricbeat playbook]() in the `/etc/ansible` folder and use the following commands to run the playbooks. 
+Filebeat playbook
+```
+ansible-playbook install-filebeat-playbook.yml
+```
+Metricbeat playbook
+```
+ansible-playbook install-metricbeat-playbook.yml
+```
+ 

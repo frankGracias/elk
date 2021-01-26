@@ -1,6 +1,6 @@
 # playbook that uses the filebeat role install filebeat on the remote (elk) server
 - name: Install filebeat with the filebeat role
-  hosts: elk_servers
+  hosts: webservers
   become: True  # alow user to become the elk user 
   roles: 
     - install-filebeat

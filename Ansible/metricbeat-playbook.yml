@@ -2,7 +2,7 @@
 # to download and install metricbeat in the remote (elk) server
 
   - name: Download and install metricbeat
-    hosts: elk_servers
+    hosts: webservers
     become: True
     tasks:
 
